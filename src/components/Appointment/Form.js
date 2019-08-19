@@ -10,6 +10,14 @@ export default function Form(props) {
 		setInterviewer(null);
 		props.onCancel();
 	}
+
+	function verify() {
+		if (name === "") {
+			alert("Students name cannot be blank");
+			return;
+		}
+	}
+
 	return (
 		<main className="appointment__card appointment__card--create">
 			<section className="appointment__card-left">
@@ -37,6 +45,7 @@ export default function Form(props) {
 					<Button
 						confirm
 						onClick={e => {
+							verify();
 							props.onSave(name, interviewer);
 						}}
 					>

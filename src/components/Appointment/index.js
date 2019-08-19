@@ -28,7 +28,6 @@ const Appointment = ({
 	interviewers,
 	deleteInterview
 }) => {
-	//const { mode, transition, back } = useVisualMode(EMPTY);
 	const { mode, transition, back } = useVisualMode(interview ? SHOW : EMPTY);
 	const save = (name, interviewer) => {
 		const interview = {
