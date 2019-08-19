@@ -12,7 +12,6 @@ const useVisualMode = initalMode => {
 				const [, ...restHistory] = history;
 				setHistory([newMode, ...restHistory]);
 			} else {
-				// const [, ...restHistory] = history;
 				setHistory([newMode, ...history]);
 			}
 		},
