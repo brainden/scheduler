@@ -8,9 +8,9 @@ Scheduler is an app that can be utilized to render appointments by adding your n
 
 #CREATING AN APPOINTMENT
 
-![MAKE_APPOINTMENT]()
+![MAKE_APPOINTMENT](https://github.com/brainden/scheduler/blob/master/docs/create.png?raw=true)
 
-![FULL_PAGE]()
+![FULL_PAGE](https://github.com/brainden/scheduler/blob/master/docs/final.png?raw=true)
 
 ## Setup
 
