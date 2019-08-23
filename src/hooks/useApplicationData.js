@@ -90,6 +90,18 @@ const useApplicationData = () => {
 				if (!resp.status === 204) {
 					console.error("There is an error!!!");
 				} else {
+					Promise.all([
+						axios.get("/api/days"),
+						axios.get("/api/appointments"),
+						axios.get("/api/interviewers")
+					]).then(([daysResp, appointmentsResp, interviewersResp]) => {
+						dispatch({
+							type: SET_APPLICATION_DATA,
+							days: daysResp.data,
+							appointments: appointmentsResp.data,
+							interviewers: interviewersResp.data
+						});
+					});
 					dispatch({ type: SET_INTERVIEW, id, interview });
 				}
 			});
@@ -102,6 +114,18 @@ const useApplicationData = () => {
 					rej();
 					return;
 				}
+				Promise.all([
+					axios.get("/api/days"),
+					axios.get("/api/appointments"),
+					axios.get("/api/interviewers")
+				]).then(([daysResp, appointmentsResp, interviewersResp]) => {
+					dispatch({
+						type: SET_APPLICATION_DATA,
+						days: daysResp.data,
+						appointments: appointmentsResp.data,
+						interviewers: interviewersResp.data
+					});
+				});
 				dispatch({ type: SET_INTERVIEW, id, interview: null });
 				res();
 			});

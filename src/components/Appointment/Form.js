@@ -5,6 +5,7 @@ import InterviewerList from "../InterviewerList";
 export default function Form(props) {
 	const [name, setName] = useState(props.name || "");
 	const [interviewer, setInterviewer] = useState(props.interviewer || null);
+	const [error, setError] = useState("");
 	function reset() {
 		setName("");
 		setInterviewer(null);
@@ -13,9 +14,11 @@ export default function Form(props) {
 
 	function verify() {
 		if (name === "") {
-			alert("Students name cannot be blank");
+			setError("Students name cannot be blank");
 			return;
 		}
+		setError("");
+		props.onSave(name, interviewer);
 	}
 
 	return (
@@ -42,13 +45,7 @@ export default function Form(props) {
 					<Button danger onClick={reset}>
 						Cancel
 					</Button>
-					<Button
-						confirm
-						onClick={e => {
-							verify();
-							props.onSave(name, interviewer);
-						}}
-					>
+					<Button confirm onClick={verify}>
 						Save
 					</Button>
 				</section>

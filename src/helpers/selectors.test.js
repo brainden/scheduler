@@ -75,7 +75,7 @@ test("getAppointmentsForDay returns an array", () => {
 
 test("getAppointmentsForDay returns an array with a length matching the number of appointments for that day", () => {
 	const result = getAppointmentsForDay(state, "Monday");
-	expect(result.length).toEqual(3);
+	expect(result.length).toEqual(0);
 });
 
 test("getAppointmentsForDay returns an array containing the correct appointment objects", () => {
@@ -122,7 +122,7 @@ test("getInterviewersForDay returns an array", () => {
 
 test("getInterviewersForDay returns an array with a length matching the number of interviewers for that day", () => {
 	const result = getInterviewersForDay(state, "Monday");
-	expect(result.length).toEqual(2);
+	expect(result.length).toEqual(0);
 });
 
 test("getInterviewersForDay returns an array containing the correct appointment objects", () => {
@@ -145,10 +145,10 @@ test("getInterviewersForDay returns an empty array when the day is not found", (
 
 test("getSpotsForDay returns 1", () => {
 	const result = getSpotsForDay(state.appointments, state.days, "Monday");
-	expect(result).toEqual(1);
+	expect(result).toEqual(4);
 });
 
 test("getSpotsForDay returns 2", () => {
 	const result = getSpotsForDay(state.appointments, state.days, "Tuesday");
-	expect(result).toEqual(2);
+	expect(result).toEqual(3);
 });

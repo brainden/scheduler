@@ -30,20 +30,22 @@ const Appointment = ({
 }) => {
 	const { mode, transition, back } = useVisualMode(interview ? SHOW : EMPTY);
 	const save = (name, interviewer) => {
-		const interview = {
-			student: name,
-			interviewer
-		};
+		if (interviewer) {
+			const interview = {
+				student: name,
+				interviewer
+			};
 
-		transition(SAVING);
+			transition(SAVING);
 
-		bookInterview(id, interview)
-			.then(() => {
-				transition(SHOW, true);
-			})
-			.catch(() => {
-				transition(ERROR_SAVE, true);
-			});
+			bookInterview(id, interview)
+				.then(() => {
+					transition(SHOW, true);
+				})
+				.catch(() => {
+					transition(ERROR_SAVE, true);
+				});
+		}
 	};
 
 	const removeInterview = () => {
