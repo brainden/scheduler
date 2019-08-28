@@ -107,13 +107,10 @@ const useApplicationData = () => {
 			});
 
 	const deleteInterview = id => {
-		return new Promise((res, rej) => {
-			axios.delete(`/api/appointments/${id}`).then(resp => {
-				if (!resp.status === 204) {
-					console.log.error("server responded with non 2XX", resp.body);
-					rej();
-					return;
-				}
+		return axios.delete(`/api/appointments/${id}`).then(resp => {
+			if (!resp.status === 204) {
+				console.log.error("server responded with non 2XX", resp.body);
+			} else {
 				Promise.all([
 					axios.get("/api/days"),
 					axios.get("/api/appointments"),
@@ -127,8 +124,7 @@ const useApplicationData = () => {
 					});
 				});
 				dispatch({ type: SET_INTERVIEW, id, interview: null });
-				res();
-			});
+			}
 		});
 	};
 	return { state, setDay, bookInterview, deleteInterview };
